@@ -1,6 +1,6 @@
 ---
 title: "Postal Service Management System"
-excerpt: "Project for COSC 3380"
+excerpt: "PHP + HTML/CSS + MySQL"
 collection: portfolio
 ---
 
