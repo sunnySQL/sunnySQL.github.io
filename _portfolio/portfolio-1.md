@@ -1,6 +1,6 @@
 ---
 title: "Web-based User Management System"
-excerpt: "Project for COSC 4353"
+excerpt: "Python + Flask + PostgreSQL"
 collection: portfolio
 ---
 
