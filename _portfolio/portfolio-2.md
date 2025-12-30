@@ -11,7 +11,7 @@ This project is a comprehensive web-based system developed for simulating the op
 The goal of the system is to digitally manage last-mile deliveries, package status tracking, customer requests, inventory management, and retail purchases, while ensuring data consistency and real-time visibility for stakeholders.
 
 
-## Project Workflow
+## System Workflow
 
 ### 1. Package Submission and Quoting
 A package journey begins when a customer either submits package details online through their dashboard or visits a facility where a clerk assists them. The form collects sender and receiver information, package dimensions (size and weight), and the preferred shipping speed.
