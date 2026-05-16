@@ -156,8 +156,13 @@ body {
     }
 
     .masthead,
-    #main {
+    #main,
+    .page__footer {
         margin-left: 0 !important;
+    }
+
+    .page__footer {
+        width: 100% !important;
     }
 
     .masthead__inner-wrap {
@@ -192,6 +197,7 @@ body {
         margin-right: 0;
         text-align: center;
         padding-top: 80px;
+        z-index: 10;
     }
 
     .navbar {
@@ -201,6 +207,11 @@ body {
     .masthead,
     #main {
         margin-left: 280px;
+    }
+
+    .page__footer {
+        margin-left: 280px !important;
+        width: calc(100% - 280px) !important;
     }
 
     .masthead__inner-wrap {
@@ -249,5 +260,10 @@ body {
 
     #main {
         margin-left: 300px !important;
+    }
+
+    .page__footer {
+        margin-left: 300px !important;
+        width: calc(100% - 300px) !important;
     }
 }
