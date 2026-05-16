@@ -1,13 +1,13 @@
 ---
 permalink: /
-title: "Hung Liu"
+title: "About Me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-Hi, I am **Hung Liu**, a Computer Science graduate from the University of Houston with a minor in Mathematics. I am focused on software engineering, full-stack web development, and data-driven systems. My recent work includes building marketplace search tools, role-based workflow applications, database-heavy management systems, and technical support experience with production POS environments.
+I am a Computer Science graduate from the University of Houston with a minor in Mathematics, focused on software engineering, full-stack web development, and data-driven systems. My recent work includes building marketplace search tools, role-based workflow applications, database-heavy management systems, and technical support experience with production POS environments.
 
 ## Skills and Expertise
 - **Programming Languages**: Python, JavaScript, TypeScript, SQL, PHP, C++, C#
