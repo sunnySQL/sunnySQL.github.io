@@ -2,6 +2,7 @@
 title: "TimeScout"
 excerpt: "Next.js + TypeScript + MySQL"
 collection: portfolio
+sort_date: 2026-04-01
 ---
 
 ## Project Description

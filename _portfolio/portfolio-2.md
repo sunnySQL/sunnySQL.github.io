@@ -2,6 +2,7 @@
 title: "Postal Service Management System"
 excerpt: "PHP + HTML/CSS + MySQL"
 collection: portfolio
+sort_date: 2025-04-01
 ---
 
 
@@ -109,6 +110,5 @@ Frontend: HTML, CSS, minimal JS, AJAX
 Database: MySQL
 
 Deployment: XAMPP (localhost), DigitalOcean
-
 
 

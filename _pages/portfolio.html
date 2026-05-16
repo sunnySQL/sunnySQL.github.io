@@ -9,6 +9,7 @@ Here are some projects I've worked on:
 
 {% include base_path %}
 
-{% for post in site.portfolio %}
+{% assign portfolio_items = site.portfolio | sort: "sort_date" | reverse %}
+{% for post in portfolio_items %}
   {% include archive-single.html %}
 {% endfor %}
