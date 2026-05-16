@@ -37,7 +37,7 @@ Feel free to explore my repositories to see the projects I have worked on. I am 
 
 ## Connect with me
 <div class="profile-actions">
-  <a class="profile-action" href="files/Resume.pdf">Resume</a>
-  <a class="profile-action" href="https://github.com/sunnySQL">GitHub</a>
-  <a class="profile-action" href="https://www.linkedin.com/in/hung-liu0">LinkedIn</a>
+  <a class="profile-action profile-action--resume" href="files/Resume.pdf">Resume</a>
+  <a class="profile-action profile-action--github" href="https://github.com/sunnySQL">GitHub</a>
+  <a class="profile-action profile-action--linkedin" href="https://www.linkedin.com/in/hung-liu0">LinkedIn</a>
 </div>
