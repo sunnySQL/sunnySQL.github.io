@@ -10,10 +10,10 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Academic Homepage"
+title                    : "Hung Liu"
 title_separator          : "-"
 name                     : &name "Hung Liu"
-description              : &description "personal description"
+description              : &description "Software engineering portfolio for Hung Liu"
 url                      : "https://sunnySQL.github.io/"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "sunnySQL.github.io"

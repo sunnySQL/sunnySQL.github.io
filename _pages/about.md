@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Welcome to My Academic Page"
+title: "Hung Liu"
 author_profile: true
 redirect_from: 
   - /about/
@@ -36,4 +36,8 @@ Feel free to explore my repositories to see the projects I have worked on. I am 
 
 
 ## Connect with me
-[Resume](files/Resume.pdf)
+<div class="profile-actions">
+  <a class="profile-action" href="files/Resume.pdf">Resume</a>
+  <a class="profile-action" href="https://github.com/sunnySQL">GitHub</a>
+  <a class="profile-action" href="https://www.linkedin.com/in/hung-liu0">LinkedIn</a>
+</div>
