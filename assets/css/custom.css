@@ -1,6 +1,8 @@
 /* Global Styles */
 :root {
-    --sidebar-offset: 300px;
+    --sidebar-width: 250px;
+    --sidebar-edge: 250px;
+    --content-offset: 300px;
 }
 
 body {
@@ -72,11 +74,24 @@ body {
 }
 
 .sidebar .author__urls {
+    display: block;
+    position: relative;
+    right: auto;
+    margin: 0;
     padding-left: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: auto;
 }
 
 .sidebar .author__urls li {
     list-style: none;
+}
+
+.sidebar .author__urls:before,
+.sidebar .author__urls:after {
+    display: none !important;
 }
 
 /* Buttons */
@@ -195,17 +210,30 @@ body {
     }
 
     .author__urls-wrapper {
+        display: block;
+        width: 100%;
         margin-top: 12px;
+        cursor: default;
     }
 
     .author__urls {
         display: flex !important;
+        position: static !important;
         flex-wrap: wrap;
         justify-content: center;
         gap: 8px 14px;
         margin: 0;
         padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
         list-style: none;
+        z-index: auto;
+    }
+
+    .author__urls:before,
+    .author__urls:after {
+        display: none !important;
     }
 
     .author__urls li,
@@ -257,9 +285,8 @@ body {
         position: fixed;
         top: 0;
         left: 0;
-        box-sizing: border-box;
-        width: var(--sidebar-offset);
-        max-width: var(--sidebar-offset);
+        width: var(--sidebar-width);
+        max-width: var(--sidebar-width);
         height: 100vh;
         overflow-y: auto;
         display: block;
@@ -276,13 +303,13 @@ body {
 
     .masthead,
     #main {
-        margin-left: var(--sidebar-offset);
+        margin-left: var(--content-offset);
     }
 
     .page__footer {
-        left: var(--sidebar-offset) !important;
+        left: var(--sidebar-edge) !important;
         margin-left: 0 !important;
-        width: calc(100% - var(--sidebar-offset)) !important;
+        width: calc(100% - var(--sidebar-edge)) !important;
     }
 
     .masthead__inner-wrap {
@@ -295,7 +322,7 @@ body {
     }
 
     #main {
-        margin-left: var(--sidebar-offset);
+        margin-left: var(--content-offset);
         margin-right: 0;
         max-width: none !important;
         width: auto !important;
@@ -330,12 +357,12 @@ body {
     }
 
     #main {
-        margin-left: var(--sidebar-offset) !important;
+        margin-left: var(--content-offset) !important;
     }
 
     .page__footer {
-        left: var(--sidebar-offset) !important;
+        left: var(--sidebar-edge) !important;
         margin-left: 0 !important;
-        width: calc(100% - var(--sidebar-offset)) !important;
+        width: calc(100% - var(--sidebar-edge)) !important;
     }
 }
