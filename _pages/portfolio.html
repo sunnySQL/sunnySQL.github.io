@@ -5,11 +5,13 @@ permalink: /portfolio/
 author_profile: true
 ---
 
-Here are some projects I've worked on:
+<p class="portfolio-intro">A selection of recent software projects, ordered from newest to oldest. Each write-up focuses on the problem, implementation approach, and the technical pieces that mattered most.</p>
 
 {% include base_path %}
 
+<div class="portfolio-grid">
 {% assign portfolio_items = site.portfolio | sort: "sort_date" | reverse %}
 {% for post in portfolio_items %}
   {% include archive-single.html %}
 {% endfor %}
+</div>

@@ -33,11 +33,3 @@ I am a Computer Science graduate from the University of Houston with a minor in 
 - Completed the **Google Data Analytics Professional Certificate**, gaining experience in data cleaning, visualization, project management, and communicating analytics findings.
 
 Feel free to explore my repositories to see the projects I have worked on. I am always open to collaborations and discussions on **software engineering, full-stack development, data analytics, machine learning, and database-driven systems**.
-
-
-## Connect with me
-<div class="profile-actions">
-  <a class="profile-action profile-action--resume" href="files/Resume.pdf">Resume</a>
-  <a class="profile-action profile-action--github" href="https://github.com/sunnySQL">GitHub</a>
-  <a class="profile-action profile-action--linkedin" href="https://www.linkedin.com/in/hung-liu0">LinkedIn</a>
-</div>
