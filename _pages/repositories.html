@@ -1,0 +1,256 @@
+---
+layout: archive
+title: "Repositories"
+permalink: /repositories/
+author_profile: true
+---
+
+<section class="repo-page">
+  <p class="repo-intro">
+    A live view of my public GitHub repositories, including smaller experiments, coursework, utilities, and projects that may not have full portfolio write-ups. My curated project case studies are still highlighted on the Portfolio page.
+  </p>
+
+  <div class="repo-toolbar" aria-label="Repository filters">
+    <label class="repo-search-label" for="repo-search">Search repositories</label>
+    <input id="repo-search" class="repo-search" type="search" placeholder="Search by name, description, or language" autocomplete="off">
+
+    <label class="repo-filter-label" for="repo-language">Language</label>
+    <select id="repo-language" class="repo-language">
+      <option value="">All languages</option>
+    </select>
+  </div>
+
+  <div id="repo-status" class="repo-status" role="status">Loading public repositories from GitHub...</div>
+  <div id="repo-grid" class="repo-grid" aria-live="polite"></div>
+</section>
+
+<script>
+(function () {
+  var githubUser = "sunnySQL";
+  var apiUrl = "https://api.github.com/users/" + githubUser + "/repos?sort=updated&per_page=100";
+  var hiddenRepos = [];
+  var portfolioLinks = {
+    "Olympus-ML-Audit": "/portfolio/olympus/",
+    "TimeScout": "/portfolio/timescout/",
+    "sunnySQL.github.io": "/"
+  };
+
+  var repos = [];
+  var readmeCache = {};
+  var grid = document.getElementById("repo-grid");
+  var status = document.getElementById("repo-status");
+  var search = document.getElementById("repo-search");
+  var language = document.getElementById("repo-language");
+
+  function escapeHtml(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function formatDate(value) {
+    return new Date(value).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short"
+    });
+  }
+
+  function languageColor(value) {
+    var colors = {
+      JavaScript: "#f7df1e",
+      TypeScript: "#3178c6",
+      Python: "#3572a5",
+      PHP: "#4f5d95",
+      HTML: "#e34c26",
+      CSS: "#563d7c",
+      Java: "#b07219",
+      "C++": "#f34b7d",
+      "C#": "#178600",
+      Ruby: "#701516",
+      Go: "#00add8",
+      Swift: "#f05138"
+    };
+    return colors[value] || "#64748b";
+  }
+
+  function firstReadmeSummary(markdown) {
+    var lines = markdown.split("\n");
+    for (var i = 0; i < lines.length; i += 1) {
+      var line = lines[i].trim();
+      if (!line || line.charAt(0) === "#" || line.charAt(0) === "!" || line.indexOf("```") === 0 || line.indexOf("---") === 0) {
+        continue;
+      }
+      line = line
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+        .replace(/\*\*(.*?)\*\*/g, "$1")
+        .replace(/\*(.*?)\*/g, "$1")
+        .replace(/`([^`]+)`/g, "$1")
+        .replace(/^\s*[-*]\s+/, "")
+        .trim();
+      if (line.length > 24) {
+        return line.length > 360 ? line.slice(0, 360) + "..." : line;
+      }
+    }
+    return "No readable README summary found for this repository.";
+  }
+
+  function repoMatches(repo) {
+    var query = search.value.trim().toLowerCase();
+    var selectedLanguage = language.value;
+    var searchable = [
+      repo.name,
+      repo.description,
+      repo.language,
+      (repo.topics || []).join(" ")
+    ].join(" ").toLowerCase();
+
+    if (selectedLanguage && repo.language !== selectedLanguage) {
+      return false;
+    }
+
+    return !query || searchable.indexOf(query) !== -1;
+  }
+
+  function renderLanguages() {
+    var languages = repos
+      .map(function (repo) { return repo.language; })
+      .filter(Boolean)
+      .filter(function (item, index, list) { return list.indexOf(item) === index; })
+      .sort();
+
+    languages.forEach(function (item) {
+      var option = document.createElement("option");
+      option.value = item;
+      option.textContent = item;
+      language.appendChild(option);
+    });
+  }
+
+  function renderRepos() {
+    var filtered = repos.filter(repoMatches);
+    grid.innerHTML = "";
+
+    if (!filtered.length) {
+      status.textContent = "No repositories match the current filters.";
+      return;
+    }
+
+    status.textContent = filtered.length + " public repositories shown from GitHub.";
+
+    filtered.forEach(function (repo) {
+      var card = document.createElement("article");
+      card.className = "repo-card";
+      card.dataset.repo = repo.name;
+
+      var portfolioLink = portfolioLinks[repo.name];
+      var topics = (repo.topics || []).slice(0, 5).map(function (topic) {
+        return '<span class="repo-topic">' + escapeHtml(topic) + "</span>";
+      }).join("");
+
+      card.innerHTML = [
+        '<div class="repo-card__header">',
+          '<div>',
+            '<h2 class="repo-card__title"><a href="' + escapeHtml(repo.html_url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(repo.name) + "</a></h2>",
+            '<p class="repo-card__description">' + escapeHtml(repo.description || "No description provided yet.") + "</p>",
+          "</div>",
+          '<span class="repo-card__date">Updated ' + escapeHtml(formatDate(repo.updated_at)) + "</span>",
+        "</div>",
+        topics ? '<div class="repo-topics">' + topics + "</div>" : "",
+        '<div class="repo-meta">',
+          repo.language ? '<span><span class="repo-language-dot" style="background:' + languageColor(repo.language) + '"></span>' + escapeHtml(repo.language) + "</span>" : '<span>No primary language</span>',
+          '<span>Stars ' + Number(repo.stargazers_count || 0) + "</span>",
+          '<span>Forks ' + Number(repo.forks_count || 0) + "</span>",
+        "</div>",
+        '<div class="repo-actions">',
+          '<a class="repo-button repo-button--primary" href="' + escapeHtml(repo.html_url) + '" target="_blank" rel="noopener noreferrer">View GitHub</a>',
+          portfolioLink ? '<a class="repo-button" href="' + escapeHtml(portfolioLink) + '">Portfolio Write-up</a>' : "",
+          '<button class="repo-button repo-readme-button" type="button" data-repo="' + escapeHtml(repo.name) + '">README Preview</button>',
+        "</div>",
+        '<div class="repo-readme" id="readme-' + escapeHtml(repo.name) + '" hidden></div>'
+      ].join("");
+
+      grid.appendChild(card);
+    });
+  }
+
+  function loadReadme(repoName, container, button) {
+    if (readmeCache[repoName]) {
+      container.textContent = readmeCache[repoName];
+      container.hidden = !container.hidden;
+      button.textContent = container.hidden ? "README Preview" : "Hide README";
+      return;
+    }
+
+    button.textContent = "Loading README...";
+    button.disabled = true;
+
+    fetch("https://api.github.com/repos/" + githubUser + "/" + encodeURIComponent(repoName) + "/readme", {
+      headers: { Accept: "application/vnd.github.raw" }
+    })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("README unavailable");
+        }
+        return response.text();
+      })
+      .then(function (markdown) {
+        var summary = firstReadmeSummary(markdown);
+        readmeCache[repoName] = summary;
+        container.textContent = summary;
+        container.hidden = false;
+        button.textContent = "Hide README";
+      })
+      .catch(function () {
+        container.textContent = "README preview is not available for this repository.";
+        container.hidden = false;
+        button.textContent = "Hide README";
+      })
+      .finally(function () {
+        button.disabled = false;
+      });
+  }
+
+  grid.addEventListener("click", function (event) {
+    var button = event.target.closest(".repo-readme-button");
+    if (!button) {
+      return;
+    }
+
+    var repoName = button.getAttribute("data-repo");
+    var container = document.getElementById("readme-" + repoName);
+    if (container) {
+      loadReadme(repoName, container, button);
+    }
+  });
+
+  search.addEventListener("input", renderRepos);
+  language.addEventListener("change", renderRepos);
+
+  fetch(apiUrl)
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("GitHub API request failed");
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      repos = data
+        .filter(function (repo) {
+          return !repo.fork && !repo.archived && hiddenRepos.indexOf(repo.name) === -1;
+        })
+        .sort(function (a, b) {
+          return new Date(b.updated_at) - new Date(a.updated_at);
+        });
+
+      renderLanguages();
+      renderRepos();
+    })
+    .catch(function () {
+      status.textContent = "GitHub repositories could not be loaded right now. You can still visit my GitHub profile directly.";
+      grid.innerHTML = '<article class="repo-card"><h2 class="repo-card__title">sunnySQL on GitHub</h2><p class="repo-card__description">The live GitHub API request did not complete, but my public repositories are available on GitHub.</p><div class="repo-actions"><a class="repo-button repo-button--primary" href="https://github.com/sunnySQL" target="_blank" rel="noopener noreferrer">Open GitHub Profile</a></div></article>';
+    });
+}());
+</script>
