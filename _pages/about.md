@@ -27,8 +27,8 @@ I am a Computer Science graduate from the University of Houston with a minor in 
 - Reliable systems and developer tooling
 
 ## Recent Work
-- Built **Olympus**, a Python ML audit and backtesting platform for evaluating short-term market signals with XGBoost, Streamlit, chronological validation, walk-forward testing, baseline comparisons, ranking-alpha analysis, and generated deployment audit reports.
 - Built **TimeScout**, an AI-assisted watch marketplace aggregator using Next.js, TypeScript, MySQL, Drizzle ORM, Python, scikit-learn, Reddit API, and optional OpenAI classification.
+- Built **Olympus**, a Python ML audit and backtesting platform for evaluating short-term market signals with XGBoost, Streamlit, chronological validation, walk-forward testing, baseline comparisons, ranking-alpha analysis, and generated deployment audit reports.
 - Developed parsing and review workflows for 3,000+ marketplace listings, including normalized brand, reference, condition, price, sold status, bundle status, and watch type fields.
 - Worked as an **IT Specialist at KwickPOS**, supporting POS terminals, payment devices, printers, barcode scanners, local networking, software updates, and merchant technical support.
 - Developed a full-stack postal service management system with shipment tools, role-based dashboards, trip management, inventory control, support tickets, triggers, and reporting.
