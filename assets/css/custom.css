@@ -766,6 +766,21 @@ a:hover {
     color: #ffffff;
 }
 
+/* Soft scroll fade for page content and dynamic repository cards. */
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+        opacity 420ms ease var(--scroll-fade-delay, 0ms),
+        transform 420ms ease var(--scroll-fade-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.scroll-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 @media (min-width: 761px) and (max-width: 980px) {
     .sidebar > div[itemscope] {
         flex-direction: column;
@@ -1029,5 +1044,13 @@ a:hover {
 
     .repo-button {
         width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-fade {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }
