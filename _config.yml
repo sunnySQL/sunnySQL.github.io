@@ -27,7 +27,7 @@ minimal_mistakes_skin: default
 
 author:
   # Biographic information
-  avatar           : "profile5.jpg"
+  avatar           : "profile.jpg"
   name             : "Hung Liu"
   pronouns         : # example: "she/her"  
   bio              : "Full-stack developer focused on data-driven systems and ML-assisted tools."
