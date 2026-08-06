@@ -27,12 +27,10 @@ I am a Computer Science graduate from the University of Houston with a minor in 
 - Reliable systems and developer tooling
 
 ## Recent Work
+- Working as a **Test Engineer at Foxconn WI**, supporting PCBA test processes, SMT production lines, functional test programs, equipment troubleshooting, and process improvements in a smart manufacturing environment.
 - Built **TimeScout**, an AI-assisted watch marketplace aggregator using Next.js, TypeScript, MySQL, Drizzle ORM, Python, scikit-learn, Reddit API, and optional OpenAI classification.
 - Built **Olympus**, a Python ML audit and backtesting platform for evaluating short-term market signals with XGBoost, Streamlit, chronological validation, walk-forward testing, baseline comparisons, ranking-alpha analysis, and generated deployment audit reports.
-- Developed parsing and review workflows for 3,000+ marketplace listings, including normalized brand, reference, condition, price, sold status, bundle status, and watch type fields.
 - Worked as an **IT Specialist at KwickPOS**, supporting POS terminals, payment devices, printers, barcode scanners, local networking, software updates, and merchant technical support.
 - Developed a full-stack postal service management system with shipment tools, role-based dashboards, trip management, inventory control, support tickets, triggers, and reporting.
-- Built a web-based academic form workflow system with Microsoft 365 OAuth, role-based access control, PostgreSQL, PDF generation, and multi-level approval workflows.
-- Completed the **Google Data Analytics Professional Certificate**, gaining experience in data cleaning, visualization, project management, and communicating analytics findings.
 
 Feel free to explore my repositories to see the projects I have worked on. I am always open to collaborations and discussions on **software engineering, full-stack development, data analytics, machine learning, and database-driven systems**.
